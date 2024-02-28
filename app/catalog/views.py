@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.views import generic
+from django_filters.views import FilterView
+from .models import Book
+from .filters import BookFilter
+
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Book, Author, BookInstance, Genre
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
 
 from django.urls import reverse_lazy
 import datetime
@@ -175,3 +180,9 @@ class BookDelete(PermissionRequiredMixin, DeleteView):
             return HttpResponseRedirect(
                 reverse("book-delete", kwargs={"pk": self.object.pk})
             )
+
+class BookListView(FilterView, generic.ListView):
+    model = Book
+    template_name = 'catalog/book_list.html'
+    filterset_class = BookFilter
+    paginate_by = 5

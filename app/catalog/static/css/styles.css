@@ -1,6 +1,61 @@
-.sidebar-nav {
-    margin-top: 20px;
+*{
+    margin-top: 0;
     padding: 0;
-    list-style: none;
+    
+    font-family: sans-serif;
+    
+    
   }
+  body {
+    background-color: rgb(230, 232, 232);
+    background-image: linear-gradient(rgba(0,0,0,0.60),rgba(0,0,0,0.60)), url('../images/library1.jpg');
+    
+
+  }
+
+.nav-bar-base{
+  list-style: none;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+.nav-bar-base ul {
+  list-style: none;
+}
+.nav-center{
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.nmk-logo{
+  padding-top: -5px;
+  width: 180px;
+  height: 50px;
+}
+
+.Library-h2{
+  text-align: center;
+  font-size: 50px;
+  margin-top: 50px;
+  color: white;
+}
+.welcome-paragraph{
+  text-align: center;
+  color: whitesmoke;
   
+}
+#id01 {
+  width: 50%;
+  position: fixed; 
+  left: 300px; 
+  height: 280px; 
+}
+
+.mozilla-bold{
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+.dynamic-h2{
+  text-align: center;
+  border-radius: 30px;
+  border: 2px solid red;
+}

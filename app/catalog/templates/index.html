@@ -1,27 +1,46 @@
 {% extends "base_generic.html" %}
 
+{% block head%}
+<link rel="stylesheet" href="../static/css/styles.css">
+{% endblock %}
+
 {% block title %}
 <title>Local Library Home</title>
 {% endblock %}
 
 {% block content %}
-  <h1>Local Library Home</h1>
-  <p>
-    Welcome to LocalLibrary, a website developed by
-    <em>Mozilla Developer Network</em>!
-  </p>
-  <h2>Dynamic content</h2>
-  <p>The library has the following record counts:</p>
-  <ul>
-    <li><strong>Books:</strong> {{ num_books }}</li>
-    <li><strong>Culture Books:</strong> {{ num_cultural_books }}</li>
-    <li><strong>Copies:</strong> {{ num_instances }}</li>
-    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-    <li><strong>Authors:</strong> {{ num_authors }}</li>
-    <li><strong>Genres:</strong> {{ num_genres }}</li>
-  </ul>
 
-  <p>
-    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
-  </p>
+<div class="index-border">
+  <div>
+    <h2 class="Library-h2"><strong>LOCAL LIBRARY HOME</strong></h2>
+    <p class="welcome-paragraph">
+      Welcome to Local Library, a website developed by   
+      <b class="mozilla-bold">Mozilla Developer Network</b>!
+       <br>
+       <button class="w3-button w3-blue w3-round-xlarge "  onclick="document.getElementById('id01').style.display='block'">Read More</button> 
+    </p>
+    <div id="id01" class="w3-panel w3-white w3-display-container dynamic-content" style="display:none">
+      <span onclick="this.parentElement.style.display='none'"
+      class="w3-button w3-red w3-display-topright">x</span>
+
+      <h2 class="">Dynamic content</h2>
+      <p>The library has the following record counts:</p>
+        
+          <ul>
+            <li><strong>Books:</strong> {{ num_books }}</li>
+            <li><strong>Culture Books:</strong> {{ num_cultural_books }}</li>
+            <li><strong>Copies:</strong> {{ num_instances }}</li>
+            <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+            <li><strong>Authors:</strong> {{ num_authors }}</li>
+            <li><strong>Genres:</strong> {{ num_genres }}</li>
+          </ul>
+    
+      <p>
+        You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
+      </p>
+    </div>
+</div>
+
+
+
 {% endblock %}
