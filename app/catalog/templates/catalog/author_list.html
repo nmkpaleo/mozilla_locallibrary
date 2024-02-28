@@ -1,7 +1,12 @@
 {% extends "base_generic.html" %}
 
+{% block head%}
+<link rel="stylesheet" href="../../static/css/styles.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% endblock %}
+
 {% block content %}
-  <h1>Author List Modified by Kari, Pascalia</h1>
+  <h1>Author List</h1>
   {% if author_list %}
     <ul>
       {% for author in author_list %}
