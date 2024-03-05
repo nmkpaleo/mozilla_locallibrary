@@ -20,41 +20,46 @@
   </head>
 
   <body>
-    
-    <div class="nav-center">
-      <div class="w3-bar w3-white ">
-        <a href="" class="w3-bar-item w3-button w3-mobile"><img src="../static/images/nmk logo.png" alt="NMK LOGO" class="nmk-logo"></a>        
-        <div class="nav-bar-base">
+    <div class="nav-center w3-quarter" style="height: 100vh;">
+      <div class="w3-container w3-bar w3-white">
+        <a href="" class="w3-bar-item w3-button w3-mobile"><img src="../static/images/nmk logo.png" alt="NMK LOGO" class="nmk-logo w3-image" style="max-width: 100px;"></a>        
+        <div class="w3-container">
           
-          <ul >
-            <li><a href="{% url 'index' %}" class="w3-bar-item w3-button w3-mobile"><i class="fa-solid fa-house"></i>Home</a></li>
-            <li><a href="{% url 'books' %}" class="w3-bar-item w3-button w3-mobile"><i class="fa-solid fa-book"></i>All books</a></li>
-            <li><a href="{% url 'authors' %}" class="w3-bar-item w3-button w3-mobile"><i class="fa-solid fa-book-open-reader"></i>All authors</a></li>
+          <ul class="w3-ul">
+            <li class="w3-bar">
+              <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-mobile"><i class="fa-solid fa-house w3-margin-right"></i>Home</a>
+            </li>
+            <li class="w3-bar">
+              <a href="{% url 'books' %}" class="w3-bar-item w3-button w3-mobile"><i class="fa-solid fa-book w3-margin-right"></i>All books</a>
+            </li>
+            <li class="w3-bar">
+              <a href="{% url 'authors' %}" class="w3-bar-item w3-button w3-mobile"><i class="fa-solid fa-book-open-reader w3-margin-right"></i>All authors</a>
+            </li>
                   
             {% if user.is_authenticated %}
             <li>User: {{ user.get_username }}</li>
-            li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
+            <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
             <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
             {% if perms.catalog.can_mark_returned %}
             <hr>
             <li>Staff</li>
             <li><a href="{% url 'all-borrowed' %}">All Borrowed</a></li>
             {% if perms.catalog.add_author %}
-            li><a href="{% url 'author-create' %}">Create author</a></li>
+            <li><a href="{% url 'author-create' %}">Create author</a></li>
             {% endif %}
             {% if perms.catalog.add_book %}
-            li><a href="{% url 'book-create' %}">Create book</a></li>
+            <li><a href="{% url 'book-create' %}">Create book</a></li>
             {% endif %}
             {% endif %}
             {% else %}
-            <li><a href="{% url 'login' %}?next={{ request.path }}" class="w3-bar-item w3-button w3-mobile"><i class="fa-solid fa-right-to-bracket"></i>Login</a></li>
+            <li><a href="{% url 'login' %}?next={{ request.path }}" class="w3-bar-item w3-button w3-mobile"><i class="fa-solid fa-right-to-bracket w3-margin-right"></i>Login</a></li>
             {% endif %}
           </ul>
         </div>
 
       </div>
     </div>
-    <div>
+    <div class="main-content">
       {% block content %}
             {% endblock %}
             {% block pagination %}
