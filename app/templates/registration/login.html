@@ -1,37 +1,37 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+<div class="w3-display-topmiddle w3-margin-top w3-padding" style="height: 50vh; width: 100vh;">
   {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
   {% endif %}
 
   {% if next %}
     {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
+      <p class="w3-xlarge w3-text-blue" style="font-weight: 600;">Your account doesn't have access to this page. To proceed,
       please login with an account that has access.</p>
     {% else %}
-      <p>Please login to see this page.</p>
+      <p class="w3-xlarge w3-text-blue">Please login to see this page.</p>
     {% endif %}
   {% endif %}
 
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    <table>
-      <tr>
+    <table class="w3-section">
+      <tr style="display: flex; flex-direction: column;">
         <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
+        <td class="w3-input w3-border w3-round" style="width: 100vh;">{{ form.username }}</td>
       </tr>
-      <tr>
+      <tr style="display: flex; flex-direction: column;">
         <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
+        <td class="w3-input w3-border w3-round">{{ form.password }}</td>
       </tr>
     </table>
-    <input type="submit" value="login">
+    <input type="submit" value="Login" class="w3-button w3-blue w3-round-xlarge w3-padding-large">
     <input type="hidden" name="next" value="{{ next }}">
   </form>
 
   {# Assumes you set up the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
+  <p class="w3-section w3-text-blue w3-hover-text-teal"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+</div> 
 {% endblock %}
