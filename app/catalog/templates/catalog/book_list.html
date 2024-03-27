@@ -1,7 +1,8 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Book List Modified by Fraciah</h1>
+<div class="w3-display-topmiddle w3-padding" style="width: 100vh;">
+  <h1 class="w3-text-blue" style="font-weight: 600;">Book List Modified by Fraciah</h1>
   {% if book_list %}
     <ul>
       {% for book in book_list %}
@@ -15,11 +16,11 @@
     <p>There are no books in the library.</p>
   {% endif %}
 
-  <h1>Book List</h1>
+  <h1 class="w3-text-blue">Book List</h1>
 
   <form method="get">
     {{ filter.form.as_p }}
-    <button type="submit">Filter</button>
+    <button class="w3-button w3-blue w3-round-large" type="submit">Filter</button>
   </form>
 
   {% for book in filter.qs %}
@@ -45,4 +46,5 @@
       </span>
     </div>
   {% endif %}
+</div>
 {% endblock %}
