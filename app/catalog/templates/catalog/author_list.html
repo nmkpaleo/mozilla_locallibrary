@@ -7,6 +7,7 @@
 
 {% block content %}
   <h1>Author List</h1>
+
   {% if author_list %}
     <ul>
       {% for author in author_list %}
@@ -15,7 +16,20 @@
       </li>
       {% endfor %}
     </ul>
+
+
   {% else %}
     <p>There are no authors.</p>
+
+    
   {% endif %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button class="w3-button w3-blue w3-round-large" type="submit">Filter</button>
+  </form>
+
+  {% for book in filter.qs %}
+  <p>{{ author.last_name }} - {{ author.first_name }}</p>
+  {% endfor %}
+
 {% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django_filters.views import FilterView
 from .models import Book
-from .filters import BookFilter
+from .filters import AuthorFilter, BookFilter
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
@@ -56,8 +56,11 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
-class AuthorListView(generic.ListView):
+class AuthorListView(FilterView, generic.ListView):
+
     model = Author
+    template_name = 'catalog/author_list.html'
+    filterset_class = AuthorFilter
     paginate_by = 2
 
 class AuthorDetailView(generic.DetailView):
